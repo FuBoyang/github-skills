@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: windows-latest
     
-    setps:
+    steps:
       - name: Checkout
         uses: action/checkout@v3
         with:
@@ -33,3 +33,17 @@ jobs:
       - name: Map GitVersion
         id: mapgitversion
         run: echo "fullSemVersion=${{ steps.gitversion.outputs.fullSemVer }}" >> $env:GITHUB_OUTPUT
+      
+      # Archive
+      - name: Archive
+        run: |
+          cd ${{ github.workspace }}
+          Compress-Archive -Path .\README.md -DestinationPath .\readme.zip
+      
+      # Publish artifacts to github
+      - name: Publish build artifacts
+        uses: actions/upload-artifact@v3.1.2
+        with: 
+          name: drop
+          path: ${{ github.workspace }}\readme.zip
+          if-no-files-found: error

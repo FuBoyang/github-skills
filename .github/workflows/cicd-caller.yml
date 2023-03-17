@@ -6,13 +6,6 @@ jobs:
   build:
     uses: ./.github/workflows/ci-test.yml
    
-  release:
-    uses: ./.github/workflows/cd-test.yml
+#   release:
+#     uses: ./.github/workflows/cd-test.yml
     
-#   call-reusable-workflow:
-#     strategy:
-#       matrix:
-#         nodeversion: [14, 16, 18, 20]
-#     uses: ./.github/workflows/reusable-workflow.yml
-#     with:
-#       node: ${{ matrix.nodeversion }}  

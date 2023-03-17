@@ -1,0 +1,11 @@
+name: CI CD Entry Workflow
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/ci-test.yml
+   
+#   release:
+#     uses: ./.github/workflows/cd-test.yml
+    

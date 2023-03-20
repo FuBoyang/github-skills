@@ -5,7 +5,7 @@ on:
 jobs:
   build:
 #     uses: ./.github/workflows/ci-test.yml
-    uses: FuBoyang/github-skills/tree/feat/cicd/.github/workflows/ci-reusable.yml@feat/dev
+    uses: FuBoyang/workflow-templates/.github/workflows/ci-reusable.yml@feat/dev
    
 #   release:
 #     uses: ./.github/workflows/cd-test.yml

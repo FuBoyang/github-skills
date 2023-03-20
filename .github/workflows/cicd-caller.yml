@@ -4,34 +4,8 @@ on:
 
 jobs:
   build:
-#     uses: ./.github/workflows/ci-test.yml
     uses: FuBoyang/workflow-templates/.github/workflows/ci-reusable.yml@feat/dev
     secrets: inherit
-
-
-  pre-release:
-    strategy:
-      matrix:
-        releaseenv: [DEV_1, UAT]
-    needs: build
-    runs-on: windows-latest
-    env:
-      BUILD_OUTPUT: '${{ needs.build.outputs.buildoutput }}'
-    outputs:
-      currentEnv: ${{ matrix.releaseenv }}
-      runnerName: ${{ steps.maprunnername.outputs.runnerName }}
-      input1: ${{ needs.build.outputs.buildoutput }}
-      
-    steps:
-      - name: Map runner name
-        id: maprunnername
-        run: echo "runnerName=${{ vars.ENV_DESCRIB }}" > $env:GITHUB_OUTPUT
-#         run: |
-#           switch ('${{ matrix.releaseenv }}')
-#           {
-#             'DEV_1' { echo "" > $env:GITHUB_OUTPUT }
-#             'UAT' { echo "" > $env:GITHUB_OUTPUT }
-#           }
           
          
   release:

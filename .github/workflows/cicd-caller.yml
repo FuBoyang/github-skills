@@ -35,9 +35,11 @@ jobs:
           
          
   release:
-    needs: pre-release
+    strategy:
+      matrix:
+        releaseenv: [DEV_1, UAT]
+    needs: build
     uses: FuBoyang/workflow-templates/.github/workflows/cd-reusable.yml@feat/dev
     with:
-      environment: ${{ needs.pre-release.outputs.currentEnv }}
-      runnerName: ${{ needs.pre-release.outputs.runnerName }}
-      input1: ${{ needs.pre-release.outputs.input1 }}
+      environment: ${{ matrix.releaseenv }}
+      input1: '${{ needs.build.outputs.buildoutput }}'

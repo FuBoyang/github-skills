@@ -4,7 +4,9 @@ on:
 
 jobs:
   build:
-    uses: ./.github/workflows/ci-test.yml
+#     uses: ./.github/workflows/ci-test.yml
+    uses: FuBoyang/workflow-templates/.github/workflows/ci-reusable.yml@feat/dev
+    secrets: inherit
    
 #   release:
 #     uses: ./.github/workflows/cd-test.yml
